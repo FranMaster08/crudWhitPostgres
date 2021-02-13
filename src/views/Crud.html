@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+
+{% block content %}
+<table class="table table-sm table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Dni</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+
+     {% for item in listaDePersonas %}
+       <tr> 
+        <th scope="row">{{item.id}}</th>
+        <td>{{item.name}}</td>
+        <td>{{item.dni}}</td>  
+        <td><button class="btn btn-danger btnEliminar" value="{{item.dni}}"
+           onclick="borrar(this)">Delete</button></td>     
+      </tr>      
+        {% else %}
+        <tr> 
+            <td>This would display if the 'item' collection were empty</td>
+                 
+        </tr> 
+     {% endfor %}
+       
+    </tbody>
+  </table>
+{% endblock %}

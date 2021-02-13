@@ -1,7 +1,14 @@
+const db=require('./db/db')
 const app = require('./app')
 
-app.listen(process.env.PORT, (err) => {
-    let mensaje = `Ocurrio un error iniciando Servidor en el puerto :${process.env.PORT} :: error: err`
-    if (!err) mensaje = `Servidor Corriendo en el puerto :${process.env.PORT}`
-    console.log(mensaje);
-})
+
+
+
+db.sync()
+  .then(() => {
+    console.log('Conectado a la base de datos');
+    app.listen(3000);
+    console.log('Servidor escuchando en el puerto 3000');
+  })
+  .catch(console.error);
+
